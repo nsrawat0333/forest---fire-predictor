@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forest Fire Prediction</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(120deg, #fbc2eb 0%, #a6c1ee 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 500px;
+            margin-top: 100px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+            padding: 40px 40px 40px 40px;
+            text-align: center;
+        }
+        .btn-predict {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="color:#d72660; font-weight:700;">Forest Fire Prediction</h1>
+        <p class="lead mt-3">Welcome! Click below to predict Forest Fire Weather Index (FWI) using your data.</p>
+        <a href="{{ url_for('predict_datapoint') }}" class="btn btn-primary btn-lg btn-predict w-100">Go to Prediction Page</a>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FWI Prediction</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 500px;
+            margin-top: 60px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+            padding: 30px 40px 40px 40px;
+        }
+        .btn-home {
+            margin-bottom: 20px;
+        }
+        .result-box {
+            background: #e0f7fa;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 20px;
+            text-align: center;
+            font-size: 1.3rem;
+            color: #00796b;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="{{ url_for('predict_datapoint') }}" class="btn btn-success btn-home w-100">Go to Prediction Page</a>
+        <h1 class="text-center mb-4" style="color:#1976d2; font-weight:700;">FWI Prediction</h1>
+        <!-- Main Input For Receiving Query to our ML Model -->
+        <form action="{{url_for('predict_datapoint')}}" method="post">
+            <div class="mb-3">
+                <input type="text" class="form-control" name="Temperature" placeholder="Temperature" required />
+            </div>
+            <div class="mb-3">
+                <input type="text" class="form-control" name="RH" placeholder="RH" required />
+            </div>
+            <div class="mb-3">
+                <input type="text" class="form-control" name="WS" placeholder="Wind Speed" required />
+            </div>
+            <div class="mb-3">
+                <input type="text" class="form-control" name="Rain" placeholder="Rain" required />
+            </div>
+            <div class="mb-3">
+                <input type="text" class="form-control" name="FFMC" placeholder="FFMC" required />
+            </div>
+            <div class="mb-3">
+                <input type="text" class="form-control" name="DMC" placeholder="DMC" required />
+            </div>
+            <div class="mb-3">
+                <input type="text" class="form-control" name="ISI" placeholder="ISI" required />
+            </div>
+            <div class="mb-3">
+                <input type="text" class="form-control" name="Classes" placeholder="Classes" required />
+            </div>
+            <div class="mb-3">
+                <input type="text" class="form-control" name="Region" placeholder="Region" required />
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Predict</button>
+        </form>
+        {% if result is not none %}
+        <div class="result-box">
+            THE FWI prediction is {{ result }}
+        </div>
+        {% endif %}
+    </div>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
